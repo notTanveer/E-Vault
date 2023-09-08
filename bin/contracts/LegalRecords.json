@@ -1,0 +1,1575 @@
+{
+    "contractName": "LegalRecords",
+    "abi": [
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": true,
+                    "internalType": "address",
+                    "name": "user",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "string",
+                    "name": "content",
+                    "type": "string"
+                }
+            ],
+            "name": "RecordAdded",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": true,
+                    "internalType": "address",
+                    "name": "user",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "string",
+                    "name": "content",
+                    "type": "string"
+                }
+            ],
+            "name": "RecordRetrieved",
+            "type": "event"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "string",
+                    "name": "content",
+                    "type": "string"
+                }
+            ],
+            "name": "addLegalRecord",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "index",
+                    "type": "uint256"
+                }
+            ],
+            "name": "getLegalRecord",
+            "outputs": [
+                {
+                    "internalType": "string",
+                    "name": "content",
+                    "type": "string"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "getLegalRecordsCount",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        }
+    ],
+    "metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"content\",\"type\":\"string\"}],\"name\":\"RecordAdded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"content\",\"type\":\"string\"}],\"name\":\"RecordRetrieved\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"content\",\"type\":\"string\"}],\"name\":\"addLegalRecord\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"index\",\"type\":\"uint256\"}],\"name\":\"getLegalRecord\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"content\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getLegalRecordsCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"c:/Development/E-Vault/contracts/LegalRecords.sol\":\"LegalRecords\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"c:/Development/E-Vault/contracts/LegalRecords.sol\":{\"keccak256\":\"0x65ee2566ddcb2f749247540c02e69e021e2dadc73fef76b6f32d862da0018bd0\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://98d441aa9d37ba7a49af325ea49a5099aef39be7ce6e33fd5d13ce1029eca849\",\"dweb:/ipfs/QmPaJHdyCaE2GYwC6m5JRvG7PWzpkUWQ59DWMYBj4BvVSC\"]}},\"version\":1}",
+    "bytecode": "608060405234801561001057600080fd5b506105ad806100206000396000f3fe608060405234801561001057600080fd5b50600436106100415760003560e01c80633ec32efb146100465780634b0772bf1461006f578063f2f673a914610084575b600080fd5b6100596100543660046102ea565b6100a2565b6040516100669190610303565b60405180910390f35b61008261007d366004610367565b6101e8565b005b33600090815260208190526040902054604051908152602001610066565b3360009081526020819052604090205460609082106100ff5760405162461bcd60e51b8152602060048201526014602482015273092dcecc2d8d2c840e4cac6dee4c840d2dcc8caf60631b60448201526064015b60405180910390fd5b33600090815260208190526040812080548490811061012057610120610418565b90600052602060002090600202016040518060400160405290816000820180546101499061042e565b80601f01602080910402602001604051908101604052809291908181526020018280546101759061042e565b80156101c25780601f10610197576101008083540402835291602001916101c2565b820191906000526020600020905b8154815290600101906020018083116101a557829003601f168201915b5050509183525050600191909101546001600160a01b0316602090910152519392505050565b60008151116102395760405162461bcd60e51b815260206004820152601e60248201527f5265636f726420636f6e74656e742063616e6e6f7420626520656d707479000060448201526064016100f6565b60408051808201825282815233602080830182905260009182528181529281208054600181018255908252929020815191928392600290910290910190819061028290826104b7565b5060209190910151600190910180546001600160a01b0319166001600160a01b0390921691909117905560405133907f44626cfec8a165f72396cc5e247c6b96279f8c205a8d07c390df7aa5806205fa906102de908590610303565b60405180910390a25050565b6000602082840312156102fc57600080fd5b5035919050565b600060208083528351808285015260005b8181101561033057858101830151858201604001528201610314565b506000604082860101526040601f19601f8301168501019250505092915050565b634e487b7160e01b600052604160045260246000fd5b60006020828403121561037957600080fd5b813567ffffffffffffffff8082111561039157600080fd5b818401915084601f8301126103a557600080fd5b8135818111156103b7576103b7610351565b604051601f8201601f19908116603f011681019083821181831017156103df576103df610351565b816040528281528760208487010111156103f857600080fd5b826020860160208301376000928101602001929092525095945050505050565b634e487b7160e01b600052603260045260246000fd5b600181811c9082168061044257607f821691505b60208210810361046257634e487b7160e01b600052602260045260246000fd5b50919050565b601f8211156104b257600081815260208120601f850160051c8101602086101561048f5750805b601f850160051c820191505b818110156104ae5782815560010161049b565b5050505b505050565b815167ffffffffffffffff8111156104d1576104d1610351565b6104e5816104df845461042e565b84610468565b602080601f83116001811461051a57600084156105025750858301515b600019600386901b1c1916600185901b1785556104ae565b600085815260208120601f198616915b828110156105495788860151825594840194600190910190840161052a565b50858210156105675787850151600019600388901b60f8161c191681555b5050505050600190811b0190555056fea2646970667358221220a0d859c8c2935176d37218540ae348f8fefc0eceb84346c481deafb2c9ef033a64736f6c63430008130033",
+    "deployedBytecode": "608060405234801561001057600080fd5b50600436106100415760003560e01c80633ec32efb146100465780634b0772bf1461006f578063f2f673a914610084575b600080fd5b6100596100543660046102ea565b6100a2565b6040516100669190610303565b60405180910390f35b61008261007d366004610367565b6101e8565b005b33600090815260208190526040902054604051908152602001610066565b3360009081526020819052604090205460609082106100ff5760405162461bcd60e51b8152602060048201526014602482015273092dcecc2d8d2c840e4cac6dee4c840d2dcc8caf60631b60448201526064015b60405180910390fd5b33600090815260208190526040812080548490811061012057610120610418565b90600052602060002090600202016040518060400160405290816000820180546101499061042e565b80601f01602080910402602001604051908101604052809291908181526020018280546101759061042e565b80156101c25780601f10610197576101008083540402835291602001916101c2565b820191906000526020600020905b8154815290600101906020018083116101a557829003601f168201915b5050509183525050600191909101546001600160a01b0316602090910152519392505050565b60008151116102395760405162461bcd60e51b815260206004820152601e60248201527f5265636f726420636f6e74656e742063616e6e6f7420626520656d707479000060448201526064016100f6565b60408051808201825282815233602080830182905260009182528181529281208054600181018255908252929020815191928392600290910290910190819061028290826104b7565b5060209190910151600190910180546001600160a01b0319166001600160a01b0390921691909117905560405133907f44626cfec8a165f72396cc5e247c6b96279f8c205a8d07c390df7aa5806205fa906102de908590610303565b60405180910390a25050565b6000602082840312156102fc57600080fd5b5035919050565b600060208083528351808285015260005b8181101561033057858101830151858201604001528201610314565b506000604082860101526040601f19601f8301168501019250505092915050565b634e487b7160e01b600052604160045260246000fd5b60006020828403121561037957600080fd5b813567ffffffffffffffff8082111561039157600080fd5b818401915084601f8301126103a557600080fd5b8135818111156103b7576103b7610351565b604051601f8201601f19908116603f011681019083821181831017156103df576103df610351565b816040528281528760208487010111156103f857600080fd5b826020860160208301376000928101602001929092525095945050505050565b634e487b7160e01b600052603260045260246000fd5b600181811c9082168061044257607f821691505b60208210810361046257634e487b7160e01b600052602260045260246000fd5b50919050565b601f8211156104b257600081815260208120601f850160051c8101602086101561048f5750805b601f850160051c820191505b818110156104ae5782815560010161049b565b5050505b505050565b815167ffffffffffffffff8111156104d1576104d1610351565b6104e5816104df845461042e565b84610468565b602080601f83116001811461051a57600084156105025750858301515b600019600386901b1c1916600185901b1785556104ae565b600085815260208120601f198616915b828110156105495788860151825594840194600190910190840161052a565b50858210156105675787850151600019600388901b60f8161c191681555b5050505050600190811b0190555056fea2646970667358221220a0d859c8c2935176d37218540ae348f8fefc0eceb84346c481deafb2c9ef033a64736f6c63430008130033",
+    "sourceMap": "68:1070:0:-:0;;;;;;;;;;;;;;;;;;;",
+    "deployedSourceMap": "68:1070:0:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;861:274;;;;;;:::i;:::-;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;363:364;;;;;;:::i;:::-;;:::i;:::-;;735:118;827:10;788:7;815:23;;;;;;;;;;:30;735:118;;1957:25:1;;;1945:2;1930:18;735:118:0;1811:177:1;861:274:0;983:10;971:11;:23;;;;;;;;;;:30;921:21;;963:38;;955:71;;;;-1:-1:-1;;;955:71:0;;2195:2:1;955:71:0;;;2177:21:1;2234:2;2214:18;;;2207:30;-1:-1:-1;;;2253:18:1;;;2246:50;2313:18;;955:71:0;;;;;;;;;1074:10;1039:20;1062:23;;;;;;;;;;:30;;1086:5;;1062:30;;;;;;:::i;:::-;;;;;;;;;;;1039:53;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;1039:53:0;;;-1:-1:-1;;1039:53:0;;;;;;-1:-1:-1;;;;;1039:53:0;;;;;;1113:14;;861:274;-1:-1:-1;;;861:274:0:o;363:364::-;460:1;442:7;436:21;:25;428:68;;;;-1:-1:-1;;;428:68:0;;3061:2:1;428:68:0;;;3043:21:1;3100:2;3080:18;;;3073:30;3139:32;3119:18;;;3112:60;3189:18;;428:68:0;2859:354:1;428:68:0;535:82;;;;;;;;;;;595:10;535:82;;;;;;;509:23;630;;;;;;;;;:39;;;;;;;;;;;;;;;535:82;;;;630:39;;;;;;;;;;;;;;:::i;:::-;-1:-1:-1;630:39:0;;;;;;;;;;;;-1:-1:-1;;;;;;630:39:0;-1:-1:-1;;;;;630:39:0;;;;;;;;;687:32;;699:10;;687:32;;;;711:7;;687:32;:::i;:::-;;;;;;;;417:310;363:364;:::o;14:180:1:-;73:6;126:2;114:9;105:7;101:23;97:32;94:52;;;142:1;139;132:12;94:52;-1:-1:-1;165:23:1;;14:180;-1:-1:-1;14:180:1:o;199:548::-;311:4;340:2;369;358:9;351:21;401:6;395:13;444:6;439:2;428:9;424:18;417:34;469:1;479:140;493:6;490:1;487:13;479:140;;;588:14;;;584:23;;578:30;554:17;;;573:2;550:26;543:66;508:10;;479:140;;;483:3;668:1;663:2;654:6;643:9;639:22;635:31;628:42;738:2;731;727:7;722:2;714:6;710:15;706:29;695:9;691:45;687:54;679:62;;;;199:548;;;;:::o;752:127::-;813:10;808:3;804:20;801:1;794:31;844:4;841:1;834:15;868:4;865:1;858:15;884:922;953:6;1006:2;994:9;985:7;981:23;977:32;974:52;;;1022:1;1019;1012:12;974:52;1062:9;1049:23;1091:18;1132:2;1124:6;1121:14;1118:34;;;1148:1;1145;1138:12;1118:34;1186:6;1175:9;1171:22;1161:32;;1231:7;1224:4;1220:2;1216:13;1212:27;1202:55;;1253:1;1250;1243:12;1202:55;1289:2;1276:16;1311:2;1307;1304:10;1301:36;;;1317:18;;:::i;:::-;1392:2;1386:9;1360:2;1446:13;;-1:-1:-1;;1442:22:1;;;1466:2;1438:31;1434:40;1422:53;;;1490:18;;;1510:22;;;1487:46;1484:72;;;1536:18;;:::i;:::-;1576:10;1572:2;1565:22;1611:2;1603:6;1596:18;1651:7;1646:2;1641;1637;1633:11;1629:20;1626:33;1623:53;;;1672:1;1669;1662:12;1623:53;1728:2;1723;1719;1715:11;1710:2;1702:6;1698:15;1685:46;1773:1;1751:15;;;1768:2;1747:24;1740:35;;;;-1:-1:-1;1755:6:1;884:922;-1:-1:-1;;;;;884:922:1:o;2342:127::-;2403:10;2398:3;2394:20;2391:1;2384:31;2434:4;2431:1;2424:15;2458:4;2455:1;2448:15;2474:380;2553:1;2549:12;;;;2596;;;2617:61;;2671:4;2663:6;2659:17;2649:27;;2617:61;2724:2;2716:6;2713:14;2693:18;2690:38;2687:161;;2770:10;2765:3;2761:20;2758:1;2751:31;2805:4;2802:1;2795:15;2833:4;2830:1;2823:15;2687:161;;2474:380;;;:::o;3344:545::-;3446:2;3441:3;3438:11;3435:448;;;3482:1;3507:5;3503:2;3496:17;3552:4;3548:2;3538:19;3622:2;3610:10;3606:19;3603:1;3599:27;3593:4;3589:38;3658:4;3646:10;3643:20;3640:47;;;-1:-1:-1;3681:4:1;3640:47;3736:2;3731:3;3727:12;3724:1;3720:20;3714:4;3710:31;3700:41;;3791:82;3809:2;3802:5;3799:13;3791:82;;;3854:17;;;3835:1;3824:13;3791:82;;;3795:3;;;3435:448;3344:545;;;:::o;4065:1352::-;4191:3;4185:10;4218:18;4210:6;4207:30;4204:56;;;4240:18;;:::i;:::-;4269:97;4359:6;4319:38;4351:4;4345:11;4319:38;:::i;:::-;4313:4;4269:97;:::i;:::-;4421:4;;4485:2;4474:14;;4502:1;4497:663;;;;5204:1;5221:6;5218:89;;;-1:-1:-1;5273:19:1;;;5267:26;5218:89;-1:-1:-1;;4022:1:1;4018:11;;;4014:24;4010:29;4000:40;4046:1;4042:11;;;3997:57;5320:81;;4467:944;;4497:663;3291:1;3284:14;;;3328:4;3315:18;;-1:-1:-1;;4533:20:1;;;4651:236;4665:7;4662:1;4659:14;4651:236;;;4754:19;;;4748:26;4733:42;;4846:27;;;;4814:1;4802:14;;;;4681:19;;4651:236;;;4655:3;4915:6;4906:7;4903:19;4900:201;;;4976:19;;;4970:26;-1:-1:-1;;5059:1:1;5055:14;;;5071:3;5051:24;5047:37;5043:42;5028:58;5013:74;;4900:201;-1:-1:-1;;;;;5147:1:1;5131:14;;;5127:22;5114:36;;-1:-1:-1;4065:1352:1:o",
+    "sourcePath": "c:/Development/E-Vault/contracts/LegalRecords.sol",
+    "compiler": {
+        "name": "solc",
+        "version": "0.8.19+commit.7dd6d404"
+    },
+    "ast": {
+        "absolutePath": "c:/Development/E-Vault/contracts/LegalRecords.sol",
+        "exportedSymbols": {
+            "LegalRecords": [
+                111
+            ]
+        },
+        "id": 112,
+        "license": "MIT",
+        "nodeType": "SourceUnit",
+        "nodes": [
+            {
+                "id": 1,
+                "literals": [
+                    "solidity",
+                    ">=",
+                    "0.8",
+                    ".2",
+                    "<",
+                    "0.9",
+                    ".0"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "33:31:0"
+            },
+            {
+                "abstract": false,
+                "baseContracts": [],
+                "canonicalName": "LegalRecords",
+                "contractDependencies": [],
+                "contractKind": "contract",
+                "fullyImplemented": true,
+                "id": 111,
+                "linearizedBaseContracts": [
+                    111
+                ],
+                "name": "LegalRecords",
+                "nameLocation": "77:12:0",
+                "nodeType": "ContractDefinition",
+                "nodes": [
+                    {
+                        "canonicalName": "LegalRecords.Record",
+                        "id": 6,
+                        "members": [
+                            {
+                                "constant": false,
+                                "id": 3,
+                                "mutability": "mutable",
+                                "name": "content",
+                                "nameLocation": "129:7:0",
+                                "nodeType": "VariableDeclaration",
+                                "scope": 6,
+                                "src": "122:14:0",
+                                "stateVariable": false,
+                                "storageLocation": "default",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_string_storage_ptr",
+                                    "typeString": "string"
+                                },
+                                "typeName": {
+                                    "id": 2,
+                                    "name": "string",
+                                    "nodeType": "ElementaryTypeName",
+                                    "src": "122:6:0",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_string_storage_ptr",
+                                        "typeString": "string"
+                                    }
+                                },
+                                "visibility": "internal"
+                            },
+                            {
+                                "constant": false,
+                                "id": 5,
+                                "mutability": "mutable",
+                                "name": "owner",
+                                "nameLocation": "155:5:0",
+                                "nodeType": "VariableDeclaration",
+                                "scope": 6,
+                                "src": "147:13:0",
+                                "stateVariable": false,
+                                "storageLocation": "default",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                },
+                                "typeName": {
+                                    "id": 4,
+                                    "name": "address",
+                                    "nodeType": "ElementaryTypeName",
+                                    "src": "147:7:0",
+                                    "stateMutability": "nonpayable",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    }
+                                },
+                                "visibility": "internal"
+                            }
+                        ],
+                        "name": "Record",
+                        "nameLocation": "104:6:0",
+                        "nodeType": "StructDefinition",
+                        "scope": 111,
+                        "src": "97:71:0",
+                        "visibility": "public"
+                    },
+                    {
+                        "constant": false,
+                        "id": 12,
+                        "mutability": "mutable",
+                        "name": "userRecords",
+                        "nameLocation": "213:11:0",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 111,
+                        "src": "176:48:0",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_address_$_t_array$_t_struct$_Record_$6_storage_$dyn_storage_$",
+                            "typeString": "mapping(address => struct LegalRecords.Record[])"
+                        },
+                        "typeName": {
+                            "id": 11,
+                            "keyName": "",
+                            "keyNameLocation": "-1:-1:-1",
+                            "keyType": {
+                                "id": 7,
+                                "name": "address",
+                                "nodeType": "ElementaryTypeName",
+                                "src": "184:7:0",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                }
+                            },
+                            "nodeType": "Mapping",
+                            "src": "176:28:0",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_mapping$_t_address_$_t_array$_t_struct$_Record_$6_storage_$dyn_storage_$",
+                                "typeString": "mapping(address => struct LegalRecords.Record[])"
+                            },
+                            "valueName": "",
+                            "valueNameLocation": "-1:-1:-1",
+                            "valueType": {
+                                "baseType": {
+                                    "id": 9,
+                                    "nodeType": "UserDefinedTypeName",
+                                    "pathNode": {
+                                        "id": 8,
+                                        "name": "Record",
+                                        "nameLocations": [
+                                            "195:6:0"
+                                        ],
+                                        "nodeType": "IdentifierPath",
+                                        "referencedDeclaration": 6,
+                                        "src": "195:6:0"
+                                    },
+                                    "referencedDeclaration": 6,
+                                    "src": "195:6:0",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_struct$_Record_$6_storage_ptr",
+                                        "typeString": "struct LegalRecords.Record"
+                                    }
+                                },
+                                "id": 10,
+                                "nodeType": "ArrayTypeName",
+                                "src": "195:8:0",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_array$_t_struct$_Record_$6_storage_$dyn_storage_ptr",
+                                    "typeString": "struct LegalRecords.Record[]"
+                                }
+                            }
+                        },
+                        "visibility": "private"
+                    },
+                    {
+                        "anonymous": false,
+                        "eventSelector": "44626cfec8a165f72396cc5e247c6b96279f8c205a8d07c390df7aa5806205fa",
+                        "id": 18,
+                        "name": "RecordAdded",
+                        "nameLocation": "239:11:0",
+                        "nodeType": "EventDefinition",
+                        "parameters": {
+                            "id": 17,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 14,
+                                    "indexed": true,
+                                    "mutability": "mutable",
+                                    "name": "user",
+                                    "nameLocation": "267:4:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 18,
+                                    "src": "251:20:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 13,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "251:7:0",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 16,
+                                    "indexed": false,
+                                    "mutability": "mutable",
+                                    "name": "content",
+                                    "nameLocation": "280:7:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 18,
+                                    "src": "273:14:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_string_memory_ptr",
+                                        "typeString": "string"
+                                    },
+                                    "typeName": {
+                                        "id": 15,
+                                        "name": "string",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "273:6:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_string_storage_ptr",
+                                            "typeString": "string"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "250:38:0"
+                        },
+                        "src": "233:56:0"
+                    },
+                    {
+                        "anonymous": false,
+                        "eventSelector": "42687148e843931c4b141329a428f400c101d048d6c5d798fab68c31977e76aa",
+                        "id": 24,
+                        "name": "RecordRetrieved",
+                        "nameLocation": "301:15:0",
+                        "nodeType": "EventDefinition",
+                        "parameters": {
+                            "id": 23,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 20,
+                                    "indexed": true,
+                                    "mutability": "mutable",
+                                    "name": "user",
+                                    "nameLocation": "333:4:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 24,
+                                    "src": "317:20:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 19,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "317:7:0",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 22,
+                                    "indexed": false,
+                                    "mutability": "mutable",
+                                    "name": "content",
+                                    "nameLocation": "346:7:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 24,
+                                    "src": "339:14:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_string_memory_ptr",
+                                        "typeString": "string"
+                                    },
+                                    "typeName": {
+                                        "id": 21,
+                                        "name": "string",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "339:6:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_string_storage_ptr",
+                                            "typeString": "string"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "316:38:0"
+                        },
+                        "src": "295:60:0"
+                    },
+                    {
+                        "body": {
+                            "id": 63,
+                            "nodeType": "Block",
+                            "src": "417:310:0",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "arguments": [
+                                            {
+                                                "commonType": {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                },
+                                                "id": 36,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "lValueRequested": false,
+                                                "leftExpression": {
+                                                    "expression": {
+                                                        "arguments": [
+                                                            {
+                                                                "id": 32,
+                                                                "name": "content",
+                                                                "nodeType": "Identifier",
+                                                                "overloadedDeclarations": [],
+                                                                "referencedDeclaration": 26,
+                                                                "src": "442:7:0",
+                                                                "typeDescriptions": {
+                                                                    "typeIdentifier": "t_string_memory_ptr",
+                                                                    "typeString": "string memory"
+                                                                }
+                                                            }
+                                                        ],
+                                                        "expression": {
+                                                            "argumentTypes": [
+                                                                {
+                                                                    "typeIdentifier": "t_string_memory_ptr",
+                                                                    "typeString": "string memory"
+                                                                }
+                                                            ],
+                                                            "id": 31,
+                                                            "isConstant": false,
+                                                            "isLValue": false,
+                                                            "isPure": true,
+                                                            "lValueRequested": false,
+                                                            "nodeType": "ElementaryTypeNameExpression",
+                                                            "src": "436:5:0",
+                                                            "typeDescriptions": {
+                                                                "typeIdentifier": "t_type$_t_bytes_storage_ptr_$",
+                                                                "typeString": "type(bytes storage pointer)"
+                                                            },
+                                                            "typeName": {
+                                                                "id": 30,
+                                                                "name": "bytes",
+                                                                "nodeType": "ElementaryTypeName",
+                                                                "src": "436:5:0",
+                                                                "typeDescriptions": {}
+                                                            }
+                                                        },
+                                                        "id": 33,
+                                                        "isConstant": false,
+                                                        "isLValue": false,
+                                                        "isPure": false,
+                                                        "kind": "typeConversion",
+                                                        "lValueRequested": false,
+                                                        "nameLocations": [],
+                                                        "names": [],
+                                                        "nodeType": "FunctionCall",
+                                                        "src": "436:14:0",
+                                                        "tryCall": false,
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_bytes_memory_ptr",
+                                                            "typeString": "bytes memory"
+                                                        }
+                                                    },
+                                                    "id": 34,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": false,
+                                                    "lValueRequested": false,
+                                                    "memberLocation": "451:6:0",
+                                                    "memberName": "length",
+                                                    "nodeType": "MemberAccess",
+                                                    "src": "436:21:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_uint256",
+                                                        "typeString": "uint256"
+                                                    }
+                                                },
+                                                "nodeType": "BinaryOperation",
+                                                "operator": ">",
+                                                "rightExpression": {
+                                                    "hexValue": "30",
+                                                    "id": 35,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": true,
+                                                    "kind": "number",
+                                                    "lValueRequested": false,
+                                                    "nodeType": "Literal",
+                                                    "src": "460:1:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_rational_0_by_1",
+                                                        "typeString": "int_const 0"
+                                                    },
+                                                    "value": "0"
+                                                },
+                                                "src": "436:25:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                }
+                                            },
+                                            {
+                                                "hexValue": "5265636f726420636f6e74656e742063616e6e6f7420626520656d707479",
+                                                "id": 37,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": true,
+                                                "kind": "string",
+                                                "lValueRequested": false,
+                                                "nodeType": "Literal",
+                                                "src": "463:32:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_stringliteral_456532fbb7b3d13f737e32085e88fb2f1ce1ec2c7eeb61f1cea94478ca7cdb98",
+                                                    "typeString": "literal_string \"Record content cannot be empty\""
+                                                },
+                                                "value": "Record content cannot be empty"
+                                            }
+                                        ],
+                                        "expression": {
+                                            "argumentTypes": [
+                                                {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                },
+                                                {
+                                                    "typeIdentifier": "t_stringliteral_456532fbb7b3d13f737e32085e88fb2f1ce1ec2c7eeb61f1cea94478ca7cdb98",
+                                                    "typeString": "literal_string \"Record content cannot be empty\""
+                                                }
+                                            ],
+                                            "id": 29,
+                                            "name": "require",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [
+                                                4294967278,
+                                                4294967278
+                                            ],
+                                            "referencedDeclaration": 4294967278,
+                                            "src": "428:7:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                                                "typeString": "function (bool,string memory) pure"
+                                            }
+                                        },
+                                        "id": 38,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "nameLocations": [],
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "428:68:0",
+                                        "tryCall": false,
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_tuple$__$",
+                                            "typeString": "tuple()"
+                                        }
+                                    },
+                                    "id": 39,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "428:68:0"
+                                },
+                                {
+                                    "assignments": [
+                                        42
+                                    ],
+                                    "declarations": [
+                                        {
+                                            "constant": false,
+                                            "id": 42,
+                                            "mutability": "mutable",
+                                            "name": "newRecord",
+                                            "nameLocation": "523:9:0",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 63,
+                                            "src": "509:23:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "memory",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_struct$_Record_$6_memory_ptr",
+                                                "typeString": "struct LegalRecords.Record"
+                                            },
+                                            "typeName": {
+                                                "id": 41,
+                                                "nodeType": "UserDefinedTypeName",
+                                                "pathNode": {
+                                                    "id": 40,
+                                                    "name": "Record",
+                                                    "nameLocations": [
+                                                        "509:6:0"
+                                                    ],
+                                                    "nodeType": "IdentifierPath",
+                                                    "referencedDeclaration": 6,
+                                                    "src": "509:6:0"
+                                                },
+                                                "referencedDeclaration": 6,
+                                                "src": "509:6:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_struct$_Record_$6_storage_ptr",
+                                                    "typeString": "struct LegalRecords.Record"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "id": 48,
+                                    "initialValue": {
+                                        "arguments": [
+                                            {
+                                                "id": 44,
+                                                "name": "content",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 26,
+                                                "src": "566:7:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_string_memory_ptr",
+                                                    "typeString": "string memory"
+                                                }
+                                            },
+                                            {
+                                                "expression": {
+                                                    "id": 45,
+                                                    "name": "msg",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 4294967281,
+                                                    "src": "595:3:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_magic_message",
+                                                        "typeString": "msg"
+                                                    }
+                                                },
+                                                "id": 46,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "lValueRequested": false,
+                                                "memberLocation": "599:6:0",
+                                                "memberName": "sender",
+                                                "nodeType": "MemberAccess",
+                                                "src": "595:10:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            }
+                                        ],
+                                        "expression": {
+                                            "argumentTypes": [
+                                                {
+                                                    "typeIdentifier": "t_string_memory_ptr",
+                                                    "typeString": "string memory"
+                                                },
+                                                {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            ],
+                                            "id": 43,
+                                            "name": "Record",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 6,
+                                            "src": "535:6:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_type$_t_struct$_Record_$6_storage_ptr_$",
+                                                "typeString": "type(struct LegalRecords.Record storage pointer)"
+                                            }
+                                        },
+                                        "id": 47,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "structConstructorCall",
+                                        "lValueRequested": false,
+                                        "nameLocations": [
+                                            "557:7:0",
+                                            "588:5:0"
+                                        ],
+                                        "names": [
+                                            "content",
+                                            "owner"
+                                        ],
+                                        "nodeType": "FunctionCall",
+                                        "src": "535:82:0",
+                                        "tryCall": false,
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_struct$_Record_$6_memory_ptr",
+                                            "typeString": "struct LegalRecords.Record memory"
+                                        }
+                                    },
+                                    "nodeType": "VariableDeclarationStatement",
+                                    "src": "509:108:0"
+                                },
+                                {
+                                    "expression": {
+                                        "arguments": [
+                                            {
+                                                "id": 54,
+                                                "name": "newRecord",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 42,
+                                                "src": "659:9:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_struct$_Record_$6_memory_ptr",
+                                                    "typeString": "struct LegalRecords.Record memory"
+                                                }
+                                            }
+                                        ],
+                                        "expression": {
+                                            "argumentTypes": [
+                                                {
+                                                    "typeIdentifier": "t_struct$_Record_$6_memory_ptr",
+                                                    "typeString": "struct LegalRecords.Record memory"
+                                                }
+                                            ],
+                                            "expression": {
+                                                "baseExpression": {
+                                                    "id": 49,
+                                                    "name": "userRecords",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 12,
+                                                    "src": "630:11:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_mapping$_t_address_$_t_array$_t_struct$_Record_$6_storage_$dyn_storage_$",
+                                                        "typeString": "mapping(address => struct LegalRecords.Record storage ref[] storage ref)"
+                                                    }
+                                                },
+                                                "id": 52,
+                                                "indexExpression": {
+                                                    "expression": {
+                                                        "id": 50,
+                                                        "name": "msg",
+                                                        "nodeType": "Identifier",
+                                                        "overloadedDeclarations": [],
+                                                        "referencedDeclaration": 4294967281,
+                                                        "src": "642:3:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_magic_message",
+                                                            "typeString": "msg"
+                                                        }
+                                                    },
+                                                    "id": 51,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": false,
+                                                    "lValueRequested": false,
+                                                    "memberLocation": "646:6:0",
+                                                    "memberName": "sender",
+                                                    "nodeType": "MemberAccess",
+                                                    "src": "642:10:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_address",
+                                                        "typeString": "address"
+                                                    }
+                                                },
+                                                "isConstant": false,
+                                                "isLValue": true,
+                                                "isPure": false,
+                                                "lValueRequested": false,
+                                                "nodeType": "IndexAccess",
+                                                "src": "630:23:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_array$_t_struct$_Record_$6_storage_$dyn_storage",
+                                                    "typeString": "struct LegalRecords.Record storage ref[] storage ref"
+                                                }
+                                            },
+                                            "id": 53,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": false,
+                                            "lValueRequested": false,
+                                            "memberLocation": "654:4:0",
+                                            "memberName": "push",
+                                            "nodeType": "MemberAccess",
+                                            "src": "630:28:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_arraypush_nonpayable$_t_array$_t_struct$_Record_$6_storage_$dyn_storage_ptr_$_t_struct$_Record_$6_storage_$returns$__$attached_to$_t_array$_t_struct$_Record_$6_storage_$dyn_storage_ptr_$",
+                                                "typeString": "function (struct LegalRecords.Record storage ref[] storage pointer,struct LegalRecords.Record storage ref)"
+                                            }
+                                        },
+                                        "id": 55,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "nameLocations": [],
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "630:39:0",
+                                        "tryCall": false,
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_tuple$__$",
+                                            "typeString": "tuple()"
+                                        }
+                                    },
+                                    "id": 56,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "630:39:0"
+                                },
+                                {
+                                    "eventCall": {
+                                        "arguments": [
+                                            {
+                                                "expression": {
+                                                    "id": 58,
+                                                    "name": "msg",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 4294967281,
+                                                    "src": "699:3:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_magic_message",
+                                                        "typeString": "msg"
+                                                    }
+                                                },
+                                                "id": 59,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "lValueRequested": false,
+                                                "memberLocation": "703:6:0",
+                                                "memberName": "sender",
+                                                "nodeType": "MemberAccess",
+                                                "src": "699:10:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            {
+                                                "id": 60,
+                                                "name": "content",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 26,
+                                                "src": "711:7:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_string_memory_ptr",
+                                                    "typeString": "string memory"
+                                                }
+                                            }
+                                        ],
+                                        "expression": {
+                                            "argumentTypes": [
+                                                {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                },
+                                                {
+                                                    "typeIdentifier": "t_string_memory_ptr",
+                                                    "typeString": "string memory"
+                                                }
+                                            ],
+                                            "id": 57,
+                                            "name": "RecordAdded",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 18,
+                                            "src": "687:11:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_string_memory_ptr_$returns$__$",
+                                                "typeString": "function (address,string memory)"
+                                            }
+                                        },
+                                        "id": 61,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "nameLocations": [],
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "687:32:0",
+                                        "tryCall": false,
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_tuple$__$",
+                                            "typeString": "tuple()"
+                                        }
+                                    },
+                                    "id": 62,
+                                    "nodeType": "EmitStatement",
+                                    "src": "682:37:0"
+                                }
+                            ]
+                        },
+                        "functionSelector": "4b0772bf",
+                        "id": 64,
+                        "implemented": true,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "addLegalRecord",
+                        "nameLocation": "372:14:0",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 27,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 26,
+                                    "mutability": "mutable",
+                                    "name": "content",
+                                    "nameLocation": "401:7:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 64,
+                                    "src": "387:21:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "memory",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_string_memory_ptr",
+                                        "typeString": "string"
+                                    },
+                                    "typeName": {
+                                        "id": 25,
+                                        "name": "string",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "387:6:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_string_storage_ptr",
+                                            "typeString": "string"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "386:23:0"
+                        },
+                        "returnParameters": {
+                            "id": 28,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "417:0:0"
+                        },
+                        "scope": 111,
+                        "src": "363:364:0",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "public"
+                    },
+                    {
+                        "body": {
+                            "id": 75,
+                            "nodeType": "Block",
+                            "src": "797:56:0",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "expression": {
+                                            "baseExpression": {
+                                                "id": 69,
+                                                "name": "userRecords",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 12,
+                                                "src": "815:11:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_mapping$_t_address_$_t_array$_t_struct$_Record_$6_storage_$dyn_storage_$",
+                                                    "typeString": "mapping(address => struct LegalRecords.Record storage ref[] storage ref)"
+                                                }
+                                            },
+                                            "id": 72,
+                                            "indexExpression": {
+                                                "expression": {
+                                                    "id": 70,
+                                                    "name": "msg",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 4294967281,
+                                                    "src": "827:3:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_magic_message",
+                                                        "typeString": "msg"
+                                                    }
+                                                },
+                                                "id": 71,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "lValueRequested": false,
+                                                "memberLocation": "831:6:0",
+                                                "memberName": "sender",
+                                                "nodeType": "MemberAccess",
+                                                "src": "827:10:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            "isConstant": false,
+                                            "isLValue": true,
+                                            "isPure": false,
+                                            "lValueRequested": false,
+                                            "nodeType": "IndexAccess",
+                                            "src": "815:23:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_array$_t_struct$_Record_$6_storage_$dyn_storage",
+                                                "typeString": "struct LegalRecords.Record storage ref[] storage ref"
+                                            }
+                                        },
+                                        "id": 73,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "memberLocation": "839:6:0",
+                                        "memberName": "length",
+                                        "nodeType": "MemberAccess",
+                                        "src": "815:30:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "functionReturnParameters": 68,
+                                    "id": 74,
+                                    "nodeType": "Return",
+                                    "src": "808:37:0"
+                                }
+                            ]
+                        },
+                        "functionSelector": "f2f673a9",
+                        "id": 76,
+                        "implemented": true,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "getLegalRecordsCount",
+                        "nameLocation": "744:20:0",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 65,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "764:2:0"
+                        },
+                        "returnParameters": {
+                            "id": 68,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 67,
+                                    "mutability": "mutable",
+                                    "name": "",
+                                    "nameLocation": "-1:-1:-1",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 76,
+                                    "src": "788:7:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 66,
+                                        "name": "uint256",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "788:7:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "787:9:0"
+                        },
+                        "scope": 111,
+                        "src": "735:118:0",
+                        "stateMutability": "view",
+                        "virtual": false,
+                        "visibility": "public"
+                    },
+                    {
+                        "body": {
+                            "id": 109,
+                            "nodeType": "Block",
+                            "src": "944:191:0",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "arguments": [
+                                            {
+                                                "commonType": {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                },
+                                                "id": 90,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "lValueRequested": false,
+                                                "leftExpression": {
+                                                    "id": 84,
+                                                    "name": "index",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 78,
+                                                    "src": "963:5:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_uint256",
+                                                        "typeString": "uint256"
+                                                    }
+                                                },
+                                                "nodeType": "BinaryOperation",
+                                                "operator": "<",
+                                                "rightExpression": {
+                                                    "expression": {
+                                                        "baseExpression": {
+                                                            "id": 85,
+                                                            "name": "userRecords",
+                                                            "nodeType": "Identifier",
+                                                            "overloadedDeclarations": [],
+                                                            "referencedDeclaration": 12,
+                                                            "src": "971:11:0",
+                                                            "typeDescriptions": {
+                                                                "typeIdentifier": "t_mapping$_t_address_$_t_array$_t_struct$_Record_$6_storage_$dyn_storage_$",
+                                                                "typeString": "mapping(address => struct LegalRecords.Record storage ref[] storage ref)"
+                                                            }
+                                                        },
+                                                        "id": 88,
+                                                        "indexExpression": {
+                                                            "expression": {
+                                                                "id": 86,
+                                                                "name": "msg",
+                                                                "nodeType": "Identifier",
+                                                                "overloadedDeclarations": [],
+                                                                "referencedDeclaration": 4294967281,
+                                                                "src": "983:3:0",
+                                                                "typeDescriptions": {
+                                                                    "typeIdentifier": "t_magic_message",
+                                                                    "typeString": "msg"
+                                                                }
+                                                            },
+                                                            "id": 87,
+                                                            "isConstant": false,
+                                                            "isLValue": false,
+                                                            "isPure": false,
+                                                            "lValueRequested": false,
+                                                            "memberLocation": "987:6:0",
+                                                            "memberName": "sender",
+                                                            "nodeType": "MemberAccess",
+                                                            "src": "983:10:0",
+                                                            "typeDescriptions": {
+                                                                "typeIdentifier": "t_address",
+                                                                "typeString": "address"
+                                                            }
+                                                        },
+                                                        "isConstant": false,
+                                                        "isLValue": true,
+                                                        "isPure": false,
+                                                        "lValueRequested": false,
+                                                        "nodeType": "IndexAccess",
+                                                        "src": "971:23:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_array$_t_struct$_Record_$6_storage_$dyn_storage",
+                                                            "typeString": "struct LegalRecords.Record storage ref[] storage ref"
+                                                        }
+                                                    },
+                                                    "id": 89,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": false,
+                                                    "lValueRequested": false,
+                                                    "memberLocation": "995:6:0",
+                                                    "memberName": "length",
+                                                    "nodeType": "MemberAccess",
+                                                    "src": "971:30:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_uint256",
+                                                        "typeString": "uint256"
+                                                    }
+                                                },
+                                                "src": "963:38:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                }
+                                            },
+                                            {
+                                                "hexValue": "496e76616c6964207265636f726420696e646578",
+                                                "id": 91,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": true,
+                                                "kind": "string",
+                                                "lValueRequested": false,
+                                                "nodeType": "Literal",
+                                                "src": "1003:22:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_stringliteral_666a35c0450c1057523e9c1194d61a4247189e3bd6a5b2a75e9369b3edc28563",
+                                                    "typeString": "literal_string \"Invalid record index\""
+                                                },
+                                                "value": "Invalid record index"
+                                            }
+                                        ],
+                                        "expression": {
+                                            "argumentTypes": [
+                                                {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                },
+                                                {
+                                                    "typeIdentifier": "t_stringliteral_666a35c0450c1057523e9c1194d61a4247189e3bd6a5b2a75e9369b3edc28563",
+                                                    "typeString": "literal_string \"Invalid record index\""
+                                                }
+                                            ],
+                                            "id": 83,
+                                            "name": "require",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [
+                                                4294967278,
+                                                4294967278
+                                            ],
+                                            "referencedDeclaration": 4294967278,
+                                            "src": "955:7:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                                                "typeString": "function (bool,string memory) pure"
+                                            }
+                                        },
+                                        "id": 92,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "nameLocations": [],
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "955:71:0",
+                                        "tryCall": false,
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_tuple$__$",
+                                            "typeString": "tuple()"
+                                        }
+                                    },
+                                    "id": 93,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "955:71:0"
+                                },
+                                {
+                                    "assignments": [
+                                        96
+                                    ],
+                                    "declarations": [
+                                        {
+                                            "constant": false,
+                                            "id": 96,
+                                            "mutability": "mutable",
+                                            "name": "record",
+                                            "nameLocation": "1053:6:0",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 109,
+                                            "src": "1039:20:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "memory",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_struct$_Record_$6_memory_ptr",
+                                                "typeString": "struct LegalRecords.Record"
+                                            },
+                                            "typeName": {
+                                                "id": 95,
+                                                "nodeType": "UserDefinedTypeName",
+                                                "pathNode": {
+                                                    "id": 94,
+                                                    "name": "Record",
+                                                    "nameLocations": [
+                                                        "1039:6:0"
+                                                    ],
+                                                    "nodeType": "IdentifierPath",
+                                                    "referencedDeclaration": 6,
+                                                    "src": "1039:6:0"
+                                                },
+                                                "referencedDeclaration": 6,
+                                                "src": "1039:6:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_struct$_Record_$6_storage_ptr",
+                                                    "typeString": "struct LegalRecords.Record"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "id": 103,
+                                    "initialValue": {
+                                        "baseExpression": {
+                                            "baseExpression": {
+                                                "id": 97,
+                                                "name": "userRecords",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 12,
+                                                "src": "1062:11:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_mapping$_t_address_$_t_array$_t_struct$_Record_$6_storage_$dyn_storage_$",
+                                                    "typeString": "mapping(address => struct LegalRecords.Record storage ref[] storage ref)"
+                                                }
+                                            },
+                                            "id": 100,
+                                            "indexExpression": {
+                                                "expression": {
+                                                    "id": 98,
+                                                    "name": "msg",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 4294967281,
+                                                    "src": "1074:3:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_magic_message",
+                                                        "typeString": "msg"
+                                                    }
+                                                },
+                                                "id": 99,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "lValueRequested": false,
+                                                "memberLocation": "1078:6:0",
+                                                "memberName": "sender",
+                                                "nodeType": "MemberAccess",
+                                                "src": "1074:10:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            "isConstant": false,
+                                            "isLValue": true,
+                                            "isPure": false,
+                                            "lValueRequested": false,
+                                            "nodeType": "IndexAccess",
+                                            "src": "1062:23:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_array$_t_struct$_Record_$6_storage_$dyn_storage",
+                                                "typeString": "struct LegalRecords.Record storage ref[] storage ref"
+                                            }
+                                        },
+                                        "id": 102,
+                                        "indexExpression": {
+                                            "id": 101,
+                                            "name": "index",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 78,
+                                            "src": "1086:5:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "isConstant": false,
+                                        "isLValue": true,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "nodeType": "IndexAccess",
+                                        "src": "1062:30:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_struct$_Record_$6_storage",
+                                            "typeString": "struct LegalRecords.Record storage ref"
+                                        }
+                                    },
+                                    "nodeType": "VariableDeclarationStatement",
+                                    "src": "1039:53:0"
+                                },
+                                {
+                                    "expression": {
+                                        "id": 107,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "leftHandSide": {
+                                            "id": 104,
+                                            "name": "content",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 81,
+                                            "src": "1103:7:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_string_memory_ptr",
+                                                "typeString": "string memory"
+                                            }
+                                        },
+                                        "nodeType": "Assignment",
+                                        "operator": "=",
+                                        "rightHandSide": {
+                                            "expression": {
+                                                "id": 105,
+                                                "name": "record",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 96,
+                                                "src": "1113:6:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_struct$_Record_$6_memory_ptr",
+                                                    "typeString": "struct LegalRecords.Record memory"
+                                                }
+                                            },
+                                            "id": 106,
+                                            "isConstant": false,
+                                            "isLValue": true,
+                                            "isPure": false,
+                                            "lValueRequested": false,
+                                            "memberLocation": "1120:7:0",
+                                            "memberName": "content",
+                                            "nodeType": "MemberAccess",
+                                            "referencedDeclaration": 3,
+                                            "src": "1113:14:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_string_memory_ptr",
+                                                "typeString": "string memory"
+                                            }
+                                        },
+                                        "src": "1103:24:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_string_memory_ptr",
+                                            "typeString": "string memory"
+                                        }
+                                    },
+                                    "id": 108,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "1103:24:0"
+                                }
+                            ]
+                        },
+                        "functionSelector": "3ec32efb",
+                        "id": 110,
+                        "implemented": true,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "getLegalRecord",
+                        "nameLocation": "870:14:0",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 79,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 78,
+                                    "mutability": "mutable",
+                                    "name": "index",
+                                    "nameLocation": "893:5:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 110,
+                                    "src": "885:13:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 77,
+                                        "name": "uint256",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "885:7:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "884:15:0"
+                        },
+                        "returnParameters": {
+                            "id": 82,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 81,
+                                    "mutability": "mutable",
+                                    "name": "content",
+                                    "nameLocation": "935:7:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 110,
+                                    "src": "921:21:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "memory",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_string_memory_ptr",
+                                        "typeString": "string"
+                                    },
+                                    "typeName": {
+                                        "id": 80,
+                                        "name": "string",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "921:6:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_string_storage_ptr",
+                                            "typeString": "string"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "920:23:0"
+                        },
+                        "scope": 111,
+                        "src": "861:274:0",
+                        "stateMutability": "view",
+                        "virtual": false,
+                        "visibility": "public"
+                    }
+                ],
+                "scope": 112,
+                "src": "68:1070:0",
+                "usedErrors": []
+            }
+        ],
+        "src": "33:1107:0"
+    },
+    "functionHashes": {
+        "addLegalRecord(string)": "4b0772bf",
+        "getLegalRecord(uint256)": "3ec32efb",
+        "getLegalRecordsCount()": "f2f673a9"
+    },
+    "gasEstimates": {
+        "creation": {
+            "codeDepositCost": "290600",
+            "executionCost": "331",
+            "totalCost": "290931"
+        },
+        "external": {
+            "addLegalRecord(string)": "infinite",
+            "getLegalRecord(uint256)": "infinite",
+            "getLegalRecordsCount()": "2373"
+        }
+    }
+}
