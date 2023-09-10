@@ -43,4 +43,4 @@ To get started with the Legal eVault Blockchain System, follow these steps:
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-repo-url.git
+git clone https://github.com/notTanveer/E-Vault.git
